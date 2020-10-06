@@ -3,6 +3,25 @@ const contact = document.getElementById('contact');
 const top1 = document.getElementById('top1');
 const cover = document.getElementById('cover');
 const cover1 = document.getElementById('cover1');
+const loader = document.getElementById("expander");
+// const li1 = document.getElementById("li1");
+// const li2 = document.getElementById("li2");
+// const li3 = document.getElementById("li3");
+// const li4 = document.getElementById("li4");
+// const li5 = document.getElementById("li5");
+
+function stopLoader() {
+    loader.classList.add("stop");
+  }
+
+function startLoader(){
+    loader.classList.remove("stop");
+    setTimeout(stopLoader, 5000);
+  }
+  
+  setTimeout(stopLoader, 5000);
+
+
 
 function whoIs (){
     cover1.classList.add('away');
@@ -10,6 +29,7 @@ function whoIs (){
 top1.innerHTML =       `<div class="piccy">
 <div id="cover" class="cover"></div>
 <img src="img/DugWebpic.jpg" alt="">
+<p><blockquote>"Parlar una altra llengua és tenir una segona ànima"—Carlemany</blockquote></p>
 </div>
 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum unde autem repellat eaque maiores quos deleniti minima ad quibusdam consectetur expedita itaque reiciendis aliquid ut voluptas perspiciatis ipsa iusto optio laboriosam, temporibus nihil. Fuga aliquid expedita odit, explicabo quidem qui.
 </p>
@@ -21,6 +41,7 @@ top1.innerHTML =       `<div class="piccy">
 
 function whereIs(){
     cover.classList.add('vanish');
+    top1.style.zIndex = "1000";
 top1.innerHTML =         ` <div class="left">
 <p>Address</p>
 <p>form</p>
@@ -35,3 +56,18 @@ top1.innerHTML =         ` <div class="left">
 
 whose.addEventListener('click', whoIs);
 contact.addEventListener('click', whereIs);
+
+
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+
+
+const expander = document.getElementById('expander');
+
+
+
+function goShow(){
+    expander.classList.toggle('flexi');
+}
+

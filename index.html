@@ -4,14 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anglès Montalt</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 
     <div class="wrapper">
+        <div class="expander" id="expander">
+            <h4 id="pop">'English' a Sant Vicenç</h4>
+            <ul class="popClass">
+                <li id="li1">Professor Nadiu</li>
+                <li id="li2">Individuals o Grups Petits</li>
+                <li id="li3">Avança Rapidament</li>
+                <li id="li4">La Primera Classe Gratis...</li><br>
+                <li id="li5"><span class="close" id="close">Mes info</span></li>
+            </ul>
+            <!-- <div id="close" class="close">Tanca</div> -->
+        </div>
+      
+        <!-- <div class="popup" id="popup"></div> -->
+
+
         <div class="image-div">
-            <img src="img/UnionFlag.png" alt="">
+            <img src="img/UnionFlag.png" onclick="location.reload();" id = "flag" alt="">
         </div>
         <div class="header">
             <div class="header-left">
@@ -29,11 +46,14 @@
                 <li class="underline">Esl-ology.com</li>
             </ul>
         </div>
+        
 
             <div id="top1" class="top1">
                 <div class="piccy">
                     <div id="cover" class="cover"></div>
                 <img src="img/DugWebpic.jpg" alt="">
+                <p><blockquote>"Parlar una altra llengua és tenir una segona ànima"—Carlemany</blockquote></p>
+                
             </div>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum unde autem repellat eaque maiores quos deleniti minima ad quibusdam consectetur expedita itaque reiciendis aliquid ut voluptas perspiciatis ipsa iusto optio laboriosam, temporibus nihil. Fuga aliquid expedita odit, explicabo quidem qui.
                 </p>
@@ -42,6 +62,8 @@
                 </div>
                 <div id="cover1" class="cover1"></div>
             </div>
+
+
 <!-- 
          <div id="top2" class="top2">
                  <div id="cover" class="cover"></div>
@@ -55,6 +77,120 @@
                 </div>
             </div> - -->
        
+            <div class="content">
+
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="img-container">
+                                <img src="img/girl.jpg" alt="" class="nens">
+                            </div>
+                            <h2>Nens</h2>
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <div class="card-back">
+                            <ul class="list">
+                                <li class="list-item">Grups Petits</li>
+                                <li class="list-item">Reforç del Llibre Escolar</li>
+                                <li class="list-item">Jocs i Activitats</li>
+                                <li class="list-item">Videos i Cançons</li>
+                                <li class="list-item">Jocs Online</li>
+                                <li class="list-item">i Parlar  Moltissim!</li>
+                            </ul>
+                            <div class="img-holder">
+                            <div class="img-container-back">
+                            <img src="img/girl-min.jpg" alt="" class="nens2">
+                        </div>
+                        <span class="span1"><i class="fas fa-eye"</i></i></span>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="img-container">
+                                <img src="img/online.jpg" alt="" class="nens">
+                            </div>
+                            <h2>Online</h2>
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <div class="card-back">
+                            <ul class="list">
+                                <li class="list-item">Clases cuan vulguis</li>
+                                <li class="list-item">Clases 1-1 o grups</li>
+                                <li class="list-item">Jocs i Activitats</li>
+                                <li class="list-item">A Teu Ritme</li>
+                                <li class="list-item">Packs Economics</li>
+                                <li class="list-item">i Parlar  Moltissim!</li>
+                            </ul>
+                            <div class="img-holder">
+                            <div class="img-container-back">
+                            <img src="img/online-min.jpg" alt="" class="nens2">
+                        </div>
+                        <span class="span1"><i class="fas fa-eye"></i></span>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="img-container">
+                                <img src="img/business.jpg" alt="" class="nens">
+                            </div>
+                            <h2>Negocis</h2>
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="card-back">
+                            <ul class="list">
+                                <li class="list-item">Grups Petits i Grans</li>
+                                <li class="list-item">Experiencia en 'Business'</li>
+                                <li class="list-item">Per a Meetings</li>
+                                <li class="list-item">Per Trucades</li>
+                                <li class="list-item">Per Escriure al Maxim</li>
+                                <li class="list-item">i Parlar  Moltissim!</li>
+                            </ul>
+                            <div class="img-holder">
+                            <div class="img-container-back">
+                            <img src="img/business-min.jpg" alt="" class="nens2">
+                        </div>
+                        <span class="span1"><i class="fas fa-eye"></i></span>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="img-container">
+                                <img src="img/adults.jpg" alt="" class="nens">
+                            </div>
+                            <h2>Adults</h2>
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="card-back">
+                            <ul class="list">
+                                <li class="list-item">Grups Petits</li>
+                                <li class="list-item">Clases Particulars</li>
+                                <li class="list-item">Examens de Cambridge</li>
+                                <li class="list-item">Preparaciò Entrevistes</li>
+                                <li class="list-item">Progres Ràpid</li>
+                                <li class="list-item">i Parlar  Moltissim!</li>
+                            </ul>
+                            <div class="img-holder">
+                            <div class="img-container-back">
+                            <img src="img/adults-min.jpg" alt="" class="nens2">
+                        </div>
+                        <span class="span1"><i class="fas fa-eye"></i></span>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+
+                
      
     </div>
 

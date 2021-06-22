@@ -494,6 +494,20 @@ blockquote {
   line-height: 2rem;
   text-align: center;
 }
+.card-front ul {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  list-style-type: none;
+  font-size: 1.6rem;
+  font-family: Montserrat, sans-serif;
+  padding: 1rem;
+  padding-top: 6rem;
+  margin: auto;
+  line-height: 2rem;
+  text-align: center;
+}
 
 .card-back list {
   padding: 20px;
@@ -753,6 +767,98 @@ h3 {
 }
 
 @media only screen and (max-width: 800px) {
+  .content {
+    height: 350rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card {
+    height: 80rem;
+    width: 54rem;
+    cursor: pointer;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.5s ease-in-out;
+    transform-style: preserve-3d;
+  }
+
+  .card:hover .card-inner {
+    transform: none;
+  }
+
+  .card-front,
+  .card-back {
+    backface-visibility: hidden;
+    width: 100%;
+    height: 101%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    font-family: "Anton", sans-serif;
+    font-size: 4rem;
+    background-color: var(--slate);
+    box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.5);
+    color: var(--light-grey);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-front {
+    background-color: var(--slate);
+    color: var(--light-grey);
+  }
+
+  .card-back {
+    background-color: var(--slate);
+    transform: rotateY(180deg);
+    margin: -2px 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card-back ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    font-size: 1.6rem;
+    font-family: Montserrat, sans-serif;
+    padding: 1rem;
+    padding-top: 6rem;
+    margin: auto;
+    line-height: 2rem;
+    text-align: center;
+  }
+  .card-front ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    font-size: 3rem;
+    font-family: Montserrat, sans-serif;
+    padding: 1rem;
+    padding-top: 1rem;
+    margin: auto;
+    line-height: 3.5rem;
+    text-align: center;
+  }
+
+  .card-back list {
+    padding: 20px;
+  }
+
   .header-left {
     background-image: none;
     background-clip: text;
@@ -768,9 +874,15 @@ h3 {
   }
 
   body {
-    transform: scale(0.8);
+    width: 100%;
+    transform: scale(0.6);
     transform-origin: 0 0;
     background-color: var(--blue);
+  }
+
+  .topsdiv {
+    transform: scale(1.2);
+    margin-top: 8rem;
   }
 
   .wrapper {

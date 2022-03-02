@@ -134,6 +134,7 @@ h5 {
 }
 
 .navcontent {
+  position: relative;
   width: 1200px;
   height: 100px;
   display: flex;
@@ -354,6 +355,28 @@ h5 {
 
 .booky:hover:before {
   opacity: 1;
+}
+
+.navcontent .booky2text {
+  position: absolute;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 220px;
+  height: 65px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  z-index: 20;
+  font-family: Montserrat, sans-serif;
+  font-family: Montserrat, sans-serif;
+  font-size: small;
+  transform: translateY(-20px);
+  padding: 2px;
+  right: 70px;
+  top: -40px;
+  border-radius: 4px;
+  transition: 0.2s ease-in;
 }
 
 .gmap_canvas {

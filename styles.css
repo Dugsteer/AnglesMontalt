@@ -47,6 +47,27 @@ body {
   background-color: var(--color-light-grey);
 }
 
+.chat-message {
+    margin: 10px;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.assistant-message {
+    background-color: #eef;
+    text-align: left;
+    max-width: 80%;
+}
+
+/* Add styles for user messages if needed */
+.user-message {
+    background-color: #ddf;
+    text-align: right;
+    max-width: 80%;
+    margin-left: auto; /* Aligns the message to the right */
+}
+
+
 .wrapper {
   position: relative;
   padding-bottom: 5rem;
@@ -921,4 +942,5 @@ h3 {
   .expander h4 {
     margin-top: 50vh;
   }
+
 }

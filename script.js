@@ -26,6 +26,13 @@ function displayCancel() {
   booky2.style.display = "none";
 }
 
+function openChat() {
+  // URL of the chat page you want to open
+  const chatUrl = "chat.php";
+  // Opening a new window for chat
+  window.open(chatUrl, "ChatWindow", "width=400,height=600");
+}
+
 setTimeout(stopLoader, 4000);
 
 function whoIs() {

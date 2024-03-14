@@ -1,0 +1,112 @@
+[13-Mar-2024 13:35:26 America/Boise] PHP Warning:  include(includes/cat.php): Failed to open stream: No such file or directory in /home2/eslology/public_html/AnglesChat/index.php on line 32
+[13-Mar-2024 13:35:26 America/Boise] PHP Warning:  include(): Failed opening 'includes/cat.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/eslology/public_html/AnglesChat/index.php on line 32
+[13-Mar-2024 13:36:28 America/Boise] PHP Warning:  include(includes/cat.php): Failed to open stream: No such file or directory in /home2/eslology/public_html/AnglesChat/index.php on line 32
+[13-Mar-2024 13:36:28 America/Boise] PHP Warning:  include(): Failed opening 'includes/cat.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/eslology/public_html/AnglesChat/index.php on line 32
+[13-Mar-2024 13:48:43 America/Boise] Unexpected response format: {
+  "error": {
+    "message": "Unrecognized request argument supplied: instructions",
+    "type": "invalid_request_error",
+    "param": null,
+    "code": null
+  }
+}
+
+[13-Mar-2024 13:48:59 America/Boise] Unexpected response format: {
+  "error": {
+    "message": "Unrecognized request argument supplied: instructions",
+    "type": "invalid_request_error",
+    "param": null,
+    "code": null
+  }
+}
+
+[13-Mar-2024 14:00:47 America/Boise] Unexpected response format: {
+    "error": {
+        "message": "The model `asst_m84AbonI1um5GRnTVxmS5mjI` does not exist",
+        "type": "invalid_request_error",
+        "param": null,
+        "code": "model_not_found"
+    }
+}
+
+[13-Mar-2024 14:01:02 America/Boise] Unexpected response format: {
+    "error": {
+        "message": "The model `asst_m84AbonI1um5GRnTVxmS5mjI` does not exist",
+        "type": "invalid_request_error",
+        "param": null,
+        "code": "model_not_found"
+    }
+}
+
+[13-Mar-2024 14:02:14 America/Boise] Unexpected response format: {
+    "error": {
+        "message": "Invalid URL (POST /v1/chat/completions/asst_m84AbonI1um5GRnTVxmS5mjI)",
+        "type": "invalid_request_error",
+        "param": null,
+        "code": null
+    }
+}
+
+[13-Mar-2024 14:11:07 America/Boise] Unexpected response format: {
+    "error": {
+        "message": "Invalid URL (POST /v1/chat/completions/)",
+        "type": "invalid_request_error",
+        "param": null,
+        "code": null
+    }
+}
+
+[13-Mar-2024 14:11:23 America/Boise] Unexpected response format: {
+    "error": {
+        "message": "Invalid URL (POST /v1/chat/completions/)",
+        "type": "invalid_request_error",
+        "param": null,
+        "code": null
+    }
+}
+
+[13-Mar-2024 14:12:14 America/Boise] Unexpected response format: {
+    "error": {
+        "message": "Invalid URL (POST /v1/chat/completions/)",
+        "type": "invalid_request_error",
+        "param": null,
+        "code": null
+    }
+}
+
+[14-Mar-2024 05:31:58 America/Boise] Unexpected response format: {
+    "error": {
+        "message": "Invalid URL (POST /v1/chat/completions/)",
+        "type": "invalid_request_error",
+        "param": null,
+        "code": null
+    }
+}
+
+[14-Mar-2024 05:32:12 America/Boise] Unexpected response format: {
+    "error": {
+        "message": "Invalid URL (POST /v1/chat/completions/)",
+        "type": "invalid_request_error",
+        "param": null,
+        "code": null
+    }
+}
+
+[14-Mar-2024 05:33:34 America/Boise] PHP Warning:  Undefined variable $ch in /home2/eslology/public_html/AnglesChat/chat.php on line 25
+[14-Mar-2024 05:33:34 America/Boise] PHP Fatal error:  Uncaught TypeError: curl_exec(): Argument #1 ($handle) must be of type CurlHandle, null given in /home2/eslology/public_html/AnglesChat/chat.php:25
+Stack trace:
+#0 /home2/eslology/public_html/AnglesChat/chat.php(25): curl_exec(NULL)
+#1 {main}
+  thrown in /home2/eslology/public_html/AnglesChat/chat.php on line 25
+[14-Mar-2024 05:34:28 America/Boise] PHP Warning:  Undefined variable $ch in /home2/eslology/public_html/AnglesChat/chat.php on line 25
+[14-Mar-2024 05:34:28 America/Boise] PHP Fatal error:  Uncaught TypeError: curl_exec(): Argument #1 ($handle) must be of type CurlHandle, null given in /home2/eslology/public_html/AnglesChat/chat.php:25
+Stack trace:
+#0 /home2/eslology/public_html/AnglesChat/chat.php(25): curl_exec(NULL)
+#1 {main}
+  thrown in /home2/eslology/public_html/AnglesChat/chat.php on line 25
+[14-Mar-2024 05:37:48 America/Boise] PHP Warning:  Undefined variable $ch in /home2/eslology/public_html/AnglesChat/chat.php on line 25
+[14-Mar-2024 05:37:48 America/Boise] PHP Fatal error:  Uncaught TypeError: curl_exec(): Argument #1 ($handle) must be of type CurlHandle, null given in /home2/eslology/public_html/AnglesChat/chat.php:25
+Stack trace:
+#0 /home2/eslology/public_html/AnglesChat/chat.php(25): curl_exec(NULL)
+#1 {main}
+  thrown in /home2/eslology/public_html/AnglesChat/chat.php on line 25

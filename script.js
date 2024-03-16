@@ -27,6 +27,14 @@ function displayCancel() {
 }
 
 function openChat() {
+      fetch('clearChatHistory.php')
+    .then(response => response.text())
+    .then(data => {
+        console.log("Chat history cleared");
+        // You can add any additional logic here to open the chat UI after clearing the history
+    })
+    .catch(error => console.error('Error clearing chat history:', error));
+
   // URL of the chat page you want to open
   const chatUrl = "chat.php";
   // Opening a new window for chat

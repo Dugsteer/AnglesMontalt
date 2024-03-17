@@ -66,7 +66,10 @@ $userMessage = $prependText . $userMessage;
         "Authorization: Bearer $apiKey"
     ]);
 
+// Wait one second to make chat look realistic
     sleep(1);
+
+    
 // Execute cURL request and capture the response
     $response = curl_exec($ch);
 // Close cURL session

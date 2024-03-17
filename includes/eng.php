@@ -30,6 +30,8 @@
  <div class="navcontent booky2" id="navcontent">
      <ul>
          <li id="whose" onclick="whoIs();" class="underline">About Me</li>
+         <li id="chat" onclick="openChat();" class="underline">CHAT WITH AI</li>
+
          <li id="contact" onclick="inTouch();" class="underline">Contact</li>
          <li class="underline" onclick="window.scrollTo(0, 900);">Classes</li>
          <a href="https://esl-ology.com">

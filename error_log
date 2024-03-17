@@ -110,3 +110,22 @@ Stack trace:
 #0 /home2/eslology/public_html/AnglesChat/chat.php(25): curl_exec(NULL)
 #1 {main}
   thrown in /home2/eslology/public_html/AnglesChat/chat.php on line 25
+[14-Mar-2024 06:04:45 America/Boise] PHP Warning:  Undefined variable $api_key in /home2/eslology/public_html/AnglesChat/chat.php on line 11
+[14-Mar-2024 06:04:47 America/Boise] PHP Warning:  Undefined variable $api_key in /home2/eslology/public_html/AnglesChat/chat.php on line 11
+[14-Mar-2024 06:06:08 America/Boise] PHP Warning:  Undefined variable $api_key in /home2/eslology/public_html/AnglesChat/chat.php on line 10
+[14-Mar-2024 06:06:11 America/Boise] PHP Warning:  Undefined variable $api_key in /home2/eslology/public_html/AnglesChat/chat.php on line 10
+[14-Mar-2024 06:07:13 America/Boise] PHP Warning:  Undefined variable $api_key in /home2/eslology/public_html/AnglesChat/chat.php on line 10
+[14-Mar-2024 06:07:16 America/Boise] PHP Warning:  Undefined variable $api_key in /home2/eslology/public_html/AnglesChat/chat.php on line 10
+[14-Mar-2024 06:08:38 America/Boise] PHP Warning:  Undefined variable $data_ass in /home2/eslology/public_html/AnglesChat/chat.php on line 16
+[14-Mar-2024 06:08:45 America/Boise] PHP Warning:  Undefined variable $data_ass in /home2/eslology/public_html/AnglesChat/chat.php on line 16
+[14-Mar-2024 06:08:50 America/Boise] PHP Warning:  Undefined variable $data_ass in /home2/eslology/public_html/AnglesChat/chat.php on line 16
+[14-Mar-2024 06:17:47 America/Boise] PHP Warning:  Undefined variable $data_ass in /home2/eslology/public_html/AnglesChat/chat.php on line 16
+[14-Mar-2024 06:17:51 America/Boise] PHP Warning:  Undefined variable $data_ass in /home2/eslology/public_html/AnglesChat/chat.php on line 16
+[14-Mar-2024 06:18:12 America/Boise] PHP Warning:  Undefined variable $data_ass in /home2/eslology/public_html/AnglesChat/chat.php on line 16
+[14-Mar-2024 06:19:29 America/Boise] PHP Warning:  Undefined variable $data_ass in /home2/eslology/public_html/AnglesChat/chat.php on line 16
+[14-Mar-2024 06:19:32 America/Boise] PHP Warning:  Undefined variable $data_ass in /home2/eslology/public_html/AnglesChat/chat.php on line 16
+[14-Mar-2024 06:22:50 America/Boise] PHP Warning:  Undefined variable $data_ass in /home2/eslology/public_html/AnglesChat/chat.php on line 16
+[14-Mar-2024 06:22:54 America/Boise] PHP Warning:  Undefined variable $data_ass in /home2/eslology/public_html/AnglesChat/chat.php on line 16
+[16-Mar-2024 12:39:04 America/Boise] PHP Warning:  Undefined variable $apiKey in /home2/eslology/public_html/AnglesChat/chat.php on line 31
+[16-Mar-2024 12:39:16 America/Boise] PHP Warning:  Undefined variable $apiKey in /home2/eslology/public_html/AnglesChat/chat.php on line 31
+[16-Mar-2024 12:41:27 America/Boise] PHP Warning:  Undefined variable $apiKey in /home2/eslology/public_html/AnglesChat/chat.php on line 32

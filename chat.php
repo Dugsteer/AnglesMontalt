@@ -1,14 +1,14 @@
 <?php
-// Your OpenAI API key
+// Start session to store messages
 session_start();
 
-  
 
-
+// Include API key from a hidden file on the server
 include "includes/apikey.php";
 $assistantResponse = "";
 $userMessage = "";
 
+// Create an array to store the chat history.
 if (!isset($_SESSION['chatHistory'])) {
     $_SESSION['chatHistory'] = [];
 }
@@ -24,9 +24,12 @@ if (isset($_SESSION['chatHistory'])) {
 if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userMessage']) && !empty($_POST['userMessage'])) {
     $userMessage = trim($_POST['userMessage']);
 
+// Create a variable to display the user input on the screen    
     $outputMessage = $userMessage;
 
-    // The text string you want to prepend to $userMessage
+// Prepend text to the message giving instructions, plus remind the Chat API it needs t o read the messages. 
+// TO DO: the response language needs to be set according to the website header e.g. is set ?_eng.php 
+
 $prependText = "The text that follows the end of this message is the user message. Answer taking into account the following information: You are a friendly, casual assistant named Monty that provides help with the Anglés Montalt language school website. You answer queries in English, Spanish or Catalan. You should keep the answers fairly brief.
 
 Anglés Montalt is open from 8am to 8pm Monday to Friday. You can offer to tell a joke from time to time.
@@ -42,12 +45,10 @@ To answer most questions you will need to suggest that people contact via the em
 // Prepend the text to $userMessage
 $userMessage = $prependText . $userMessage;
 
-
-
-    // Your OpenAI Assistant's message handling URL
+// OpenAI chat handling URL
     $apiUrl = "https://api.openai.com/v1/chat/completions";
 
-    // Prepare the data for the POST request
+// Prepare the data for the POST request
     $postData = [
         "model" => "gpt-3.5-turbo", // Adjust based on your assistant's model
         "messages" => [
@@ -55,7 +56,7 @@ $userMessage = $prependText . $userMessage;
         ]
     ];
 
-    // Initialize cURL session
+// Initialize cURL session
     $ch = curl_init($apiUrl);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POST, true);
@@ -66,24 +67,26 @@ $userMessage = $prependText . $userMessage;
     ]);
 
     sleep(1);
-    // Execute cURL request and capture the response
+// Execute cURL request and capture the response
     $response = curl_exec($ch);
-    // Close cURL session
+// Close cURL session
     curl_close($ch);
 
-
+// Decode the response
 
  if ($response) {
         $responseData = json_decode($response, true);
         if (isset($responseData['choices'][0]['message']['content'])) {
             $assistantResponse = $responseData['choices'][0]['message']['content'];
-            // Append the new messages to the session's chat history
+            
+// Append the new messages to the session's chat history
             $_SESSION['chatHistory'][] = ['You' => $outputMessage, 'Monty' => $assistantResponse];
         }
     }
 }
 ?>
 
+<!-- The chat page html -->
 <!DOCTYPE html>
 <html lang="en">
 

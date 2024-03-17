@@ -48,7 +48,7 @@
 
         <h3>Website by D.A.Steer/Anglès Montalt © <?php echo date('Y'); ?></h3>
     </div>
-    <script src="script.js"></script>
+    <script src="script2.js"></script>
 </body>
 
 </html>

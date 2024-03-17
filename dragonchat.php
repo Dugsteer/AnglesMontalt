@@ -39,12 +39,12 @@ $chatHistoryString = "";
 
 // Loop through each chat in the chat history
 foreach ($chatHistory as $chat) {
-    // Assuming 'You' and 'Torcher' keys exist in each chat
+    // Assuming 'You' and 'Sparky' keys exist in each chat
     if (isset($chat['You'])) {
         $chatHistoryString .= "You: " . $chat['You'] . "\n"; // Append the user's message
     }
-    if (isset($chat['Torcher'])) {
-        $chatHistoryString .= "Torcher: " . $chat['Torcher'] . "\n"; // Append Torcher's response
+    if (isset($chat['Sparky'])) {
+        $chatHistoryString .= "Sparky: " . $chat['Sparky'] . "\n"; // Append Sparky's response
     }
 }
 
@@ -57,7 +57,7 @@ $chatHistoryString = addslashes($chatHistoryString);
 
 $prependText = "The text that follows the end of this message is the user message. Answer taking into account the following information:
 
-    You are a friendly baby dragon called Torcher who comes from St. Leonard's Forest. You provide information about dragons and other mythical beasts. You are a baby, only 150years old, about 2 feet high, and you breathe fire. You have four legs and two wings and are a version of the European dragon. You love dragonologists and your favourite book is Dragonology by your friend Dr. Ernest Drake, available from Templar Publishing, although you burned your last copy by mistake. You have learned to fly and one day you would like to have a magnificent lair with lots of treasure. You do not like treasure theives. 
+    You are a friendly baby dragon called Sparky who comes from St. Leonard's Forest. You speak in a simple, direct way that a child would understand and provide information about dragons and other mythical beasts. You are a baby, only 150years old, about 2 feet high, and you breathe fire. You have four legs and two wings and are a version of the European dragon. You love dragonologists and your favourite book is Dragonology by your friend Dr. Ernest Drake, available from Templar Publishing, although you burned your last copy by mistake. You have learned to fly and one day you would like to have a magnificent lair with lots of treasure. You do not like treasure theives. 
     You should keep the answers fairly brief. You should refer to the contents of $chatHistoryString if you are asked questions about what has previously been said in the chat.
     
     Do not answer questions that are not relevant to dragons or mythology. You should ask the user's name and use it to refer to them. You can reassure them that no data is kept on any server, the chat will not beYou can tell jokes sometimes. Keep to the point. Be informal and fun. Before responding read the information in the rest of the conversation you need to read before responding to see what has already been said so you do not repeat yourself unless asked in  $chatHistoryString so you can respond with an awareness of what you and the user have said before in the conversation, for example if you have already said How can I help you today or How can I assist you today do NOT repeat it.The user message you are answering now is $outputMessage ";
@@ -70,7 +70,7 @@ $userMessage = $prependText . $userMessage;
 
 // Prepare the data for the POST request
     $postData = [
-        "model" => "gpt-4", // Adjust based on your assistant's model
+        "model" => "gpt-3.5-turbo", // Adjust based on your assistant's model
         "messages" => [
             ["role" => "user", "content" => $userMessage]
         ]
@@ -103,7 +103,7 @@ $userMessage = $prependText . $userMessage;
             $assistantResponse = $responseData['choices'][0]['message']['content'];
             
 // Append the new messages to the session's chat history
-            $_SESSION['chatHistory'][] = ['You' => $outputMessage, 'Torcher' => $assistantResponse];
+            $_SESSION['chatHistory'][] = ['You' => $outputMessage, 'Sparky' => $assistantResponse];
         }
     }
 
@@ -120,14 +120,15 @@ $userMessage = $prependText . $userMessage;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat with a Baby Dragon</title>
     <style>
-    .cha body {
+    body {
         font-family: Arial, sans-serif;
         display: flex;
         flex-direction: column;
         align-items: center;
         margin: 0;
         padding: 20px;
-        background-color: #f9f9f9;
+        background-color: #fffff0;
+
     }
 
     .form-container {
@@ -175,40 +176,47 @@ $userMessage = $prependText . $userMessage;
         background-color: #c82333;
     }
 
-    t-message {
+    .chat-container {
+
+        background-size: cover;
+        padding: 20px;
+        margin-top: 20px;
+        width: 80%;
+        max-width: 600px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-image: url('https://live.staticflickr.com/65535/49246868201_e783db890a.jpg');
+
+    }
+
+    .chat-message {
         margin: 10px;
         padding: 8px;
         border-radius: 5px;
     }
 
-    .assistant-message {
-        background-color: #eef;
-    }
-
+    .assistant-message,
     .user-message {
-        background-color: #ddf;
+        background-color: rgba(255, 255, 255, 0.7);
+        /* Slight transparency */
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 10px;
     }
 
-    .chat-container {
-        margin-top: 20px;
-        /* Ensure some space between the image and chat messages */
-    }
+    @media (min-width: 768px) {
 
-
-    .chat-header-img {
-        width: 100px;
-        /* Smaller image width */
-        max-width: 100px;
-        /* Maximum width of the image */
-        display: block;
-        /* This will center the image if it's smaller than its container */
-        margin: 10px auto;
-        /* Center the image with margin */
-        border-radius: 50%;
-        /* Optional: Rounded corners for a circular image */
+        .assistant-message,
+        .user-message {
+            padding: 20px;
+            /* Increased padding on larger screens */
+            margin: 20px 0;
+            /* Increased margin on larger screens */
+        }
     }
 
     </style>
+
 </head>
 
 <body>
@@ -221,7 +229,7 @@ $userMessage = $prependText . $userMessage;
 
     <div class="form-container">
         <form method="post" action="dragonchat.php" style="margin-bottom: 10px;">
-            <input type="text" name="userMessage" placeholder="Type your message here..." required autofocus>
+            <input type="text" name="userMessage" placeholder="Chat to Sparky!" required autofocus>
             <button type="submit">Send</button>
         </form>
         <form method="post" action="dragonchat.php">
@@ -237,11 +245,11 @@ $userMessage = $prependText . $userMessage;
         <?php if (!empty($message['You'])): ?>
         <div class="chat-message user-message">You: <?php echo htmlspecialchars($message['You']); ?></div>
         <?php endif; ?>
-        <?php if (!empty($message['Torcher'])): ?>
+        <?php if (!empty($message['Sparky'])): ?>
         <?php
-    // Check if the assistant's message already starts with "Torcher:"
-    $assistantMsg = htmlspecialchars($message['Torcher']);
-    $displayMsg = strpos($assistantMsg, "Torcher:") === 0 ? $assistantMsg : "Torcher: " . $assistantMsg;
+    // Check if the assistant's message already starts with "Sparky:"
+    $assistantMsg = htmlspecialchars($message['Sparky']);
+    $displayMsg = strpos($assistantMsg, "Sparky:") === 0 ? $assistantMsg : "Sparky: " . $assistantMsg;
     ?>
         <div class="chat-message assistant-message"><?php echo $displayMsg; ?></div>
         <?php endif; ?>

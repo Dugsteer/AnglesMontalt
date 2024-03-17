@@ -1,2 +1,3 @@
 includes/apikey.php
-error_log
+/error_log
+/error

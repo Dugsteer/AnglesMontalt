@@ -36,7 +36,7 @@ function openChat() {
     .catch(error => console.error('Error clearing chat history:', error));
 
   // URL of the chat page you want to open
-  const chatUrl = "dragonchat.php";
+  const chatUrl = "chat.php";
   // Opening a new window for chat
   window.open(chatUrl, "ChatWindow", "width=400,height=600");
 }

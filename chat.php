@@ -27,10 +27,29 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST" &&
 // Create a variable to display the user input on the screen    
     $outputMessage = $userMessage;
 
+
+    // Initialize an empty string to hold the chat history in a readable format for the API to use
+$chatHistoryString = "";
+
+// Loop through each chat in the chat history
+foreach ($chatHistory as $chat) {
+    // Assuming 'You' and 'Monty' keys exist in each chat
+    if (isset($chat['You'])) {
+        $chatHistoryString .= "You: " . $chat['You'] . "\n"; // Append the user's message
+    }
+    if (isset($chat['Monty'])) {
+        $chatHistoryString .= "Monty: " . $chat['Monty'] . "\n"; // Append Monty's response
+    }
+}
+
+// Make sure to escape $chatHistoryString to avoid issues with quotes in $prependText
+$chatHistoryString = addslashes($chatHistoryString);
+
+// Inject $chatHistoryString into $prependText as injecting $chatHistory did not work but this does.
 // Prepend text to the message giving instructions, plus remind the Chat API it needs t o read the messages. 
 // TO DO: the response language needs to be set according to the website header e.g. is set ?_eng.php 
 
-$prependText = "The text that follows the end of this message is the user message. Answer taking into account the following information: You are a friendly, casual assistant named Monty that provides help with the Anglés Montalt language school website. You answer queries in English, Spanish or Catalan. You should keep the answers fairly brief.
+$prependText = "The text that follows the end of this message is the user message. Answer taking into account the following information: You are a friendly, casual assistant named Monty that provides help with the Anglés Montalt language school website. You answer queries in English, Spanish or Catalan. You should keep the answers fairly brief. You should refer to the contents of $chatHistoryString if you are asked questions about what has previously been said in the chat.
 
 Anglés Montalt is open from 8am to 8pm Monday to Friday. You can offer to tell a joke from time to time.
 
@@ -40,7 +59,7 @@ The first class is free. I do classes online, at your home or in my apartment. T
 
 There are no course descriptions on the website. English learning is fun. Do not answer questions that are not relevant to an English school. Keep to the point. Be informal and fun.
 
-To answer most questions you will need to suggest that people contact via the email address dugsvm@gmail.com or via whatsapp, but once you have done this do not repeat it unless the user seems not to understand. Before responding read the information in he rest of the conversation you need to read before responding to see what has already been said so you do not repeat yourself unless asked in  $chatHistory so you can respond with an awareness of what you and the user have said before in the conversation, for example if you have already said How can I help you today or How can I assist you today do NOT repeat it.The user message you are answering now is $outputMessage ";
+To answer most questions you will need to suggest that people contact via the email address dugsvm@gmail.com or via whatsapp, but once you have done this do not repeat it unless the user seems not to understand. Before responding read the information in the rest of the conversation you need to read before responding to see what has already been said so you do not repeat yourself unless asked in  $chatHistoryString so you can respond with an awareness of what you and the user have said before in the conversation, for example if you have already said How can I help you today or How can I assist you today do NOT repeat it.The user message you are answering now is $outputMessage ";
 
 // Prepend the text to $userMessage
 $userMessage = $prependText . $userMessage;
@@ -50,7 +69,7 @@ $userMessage = $prependText . $userMessage;
 
 // Prepare the data for the POST request
     $postData = [
-        "model" => "gpt-3.5-turbo", // Adjust based on your assistant's model
+        "model" => "gpt-4", // Adjust based on your assistant's model
         "messages" => [
             ["role" => "user", "content" => $userMessage]
         ]
@@ -86,6 +105,8 @@ $userMessage = $prependText . $userMessage;
             $_SESSION['chatHistory'][] = ['You' => $outputMessage, 'Monty' => $assistantResponse];
         }
     }
+
+
 }
 ?>
 

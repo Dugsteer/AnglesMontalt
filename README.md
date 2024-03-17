@@ -1,0 +1,1 @@
+This is a business website for a small language school in Spain, with the ability to fill in a contact form, or open a Whatsapp dialogue, or chat using API. the current chat version resides at www.esl-ology.com/AnglesChat, the original version at www.esl-ology.com/AnglesMontalt

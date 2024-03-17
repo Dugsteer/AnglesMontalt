@@ -151,17 +151,21 @@ $userMessage = $prependText . $userMessage;
         <div class="chat-message user-message">You: <?php echo htmlspecialchars($message['You']); ?></div>
         <?php endif; ?>
         <?php if (!empty($message['Monty'])): ?>
-        <div class="chat-message assistant-message">Monty: <?php echo htmlspecialchars($message['Monty']); ?></div>
+        <?php
+    // Check if the assistant's message already starts with "Monty:"
+    $assistantMsg = htmlspecialchars($message['Monty']);
+    $displayMsg = strpos($assistantMsg, "Monty:") === 0 ? $assistantMsg : "Monty: " . $assistantMsg;
+    ?>
+        <div class="chat-message assistant-message"><?php echo $displayMsg; ?></div>
         <?php endif; ?>
         <?php endforeach; ?>
         <?php endif; ?>
-    </div>
 
-    <script>
-    // Scroll to the bottom of the chat container to show the latest messages
-    var chatContainer = document.querySelector(".chat-container");
-    chatContainer.scrollTop = chatContainer.scrollHeight;
-    </script>
+        <script>
+        // Scroll to the bottom of the chat container to show the latest messages
+        var chatContainer = document.querySelector(".chat-container");
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+        </script>
 
 </body>
 

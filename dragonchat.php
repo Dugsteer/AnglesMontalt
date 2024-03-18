@@ -256,7 +256,8 @@ $userMessage = $prependText . $userMessage;
         href="https://www.freepik.com/free-vector/happy-orange-cartoon-dragon-smiling_51610537.htm#query=dragon&position=2&from_view=keyword&track=sph&uuid=e4b83f36-d900-4b02-91c3-f6867c4dcd73">
         Image
         by brgfx</a> on Freepik -->
-    <img src="dragon.webp" alt="Chat Header Image" class="chat-header-img">
+    <img src="dragon.webp" alt="Chat Header Image" title="Happy orange cartoon dragon smiling by brgfx on Freepik.com"
+        class=" chat-header-img">
 
 
     <div class="form-container">

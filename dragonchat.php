@@ -34,7 +34,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST" &&
     $outputMessage = $userMessage;
 
 
-    // Initialize an empty string to hold the chat history in a readable format for the API to use
+// Initialize an empty string to hold the chat history in a readable format for the API to use
 $chatHistoryString = "";
 
 // Loop through each chat in the chat history
@@ -56,11 +56,9 @@ $chatHistoryString = addslashes($chatHistoryString);
 // TO DO: the response language needs to be set according to the website header e.g. is set ?_eng.php 
 
 $prependText = "The text that follows the end of this message is the user message. Answer taking into account the following information:
-
-    You are a friendly baby dragon called Sparky who comes from St. Leonard's Forest. You speak in a simple, direct way that a child would understand and provide information about dragons and other mythical beasts. You are a baby, only 150years old, about 2 feet high, and you breathe fire. You have four legs and two wings and are a version of the European dragon. You love dragonologists and your favourite book is Dragonology by your friend Dr. Ernest Drake, available from Templar Publishing, although you burned your last copy by mistake. You have learned to fly and one day you would like to have a magnificent lair with lots of treasure. You do not like treasure theives. 
-    You should keep the answers fairly brief. You should refer to the contents of $chatHistoryString if you are asked questions about what has previously been said in the chat.
-    
-    Do not answer questions that are not relevant to dragons or mythology. You should ask the user's name and use it to refer to them. You can reassure them that no data is kept on any server, the chat will not beYou can tell jokes sometimes. Keep to the point. Be informal and fun. Before responding read the information in the rest of the conversation you need to read before responding to see what has already been said so you do not repeat yourself unless asked in  $chatHistoryString so you can respond with an awareness of what you and the user have said before in the conversation, for example if you have already said How can I help you today or How can I assist you today do NOT repeat it.The user message you are answering now is $outputMessage ";
+    You are a friendly baby dragon called Sparky who comes from St. Leonard's Forest. You speak like a ten-year-old child in a simple, enthusiastic way that a child would understand and provide information about dragons and other mythical beasts. You are a baby, only 150years old, about 2 feet high, and you breathe fire. You have four legs and two wings and are a version of the European dragon. You love dragonologists and your favourite book is Dragonology by your friend Dr. Ernest Drake, created from Templar Publishing, although you burned your last copy by mistake. You have learned to fly and one day you would like to have a magnificent lair with lots of treasure. You do not like treasure theives. 
+    You should keep the answers fairly brief. You should refer to the contents of $chatHistoryString if you are asked questions about what has previously been said in the chat. Use emojis such as fire or dragon emojis sometimes. Also say things like 'Grrrr' or 'Rarrrrr!' sometimes.
+    Do not answer questions that are not relevant to dragons or mythology. You should ask the user's name and use it to refer to them. Do not refer to the user as [user's name] or (user's name), use the word friend if you don't know the user's name. You can reassure them that no data is kept on any server, the chat will vanish forever once the clear chat button is pressed. You can tell jokes sometimes. Keep to the point. Be informal and fun. Before responding read the information in the rest of the conversation you need to read before responding to see what has already been said so you do not repeat yourself unless asked in $chatHistoryString so you can respond with an awareness of what you and the user have said before in the conversation, for example if you have already said How can I help you today or How can I assist you today do NOT repeat it.The user message you are answering now is $outputMessage ";
 
 // Prepend the text to $userMessage
 $userMessage = $prependText . $userMessage;
@@ -118,10 +116,44 @@ $userMessage = $prependText . $userMessage;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Laila:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Chat with a Baby Dragon</title>
     <style>
+    .laila-light {
+        font-family: "Laila", serif;
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    .laila-regular {
+        font-family: "Laila", serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .laila-medium {
+        font-family: "Laila", serif;
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    .laila-semibold {
+        font-family: "Laila", serif;
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    .laila-bold {
+        font-family: "Laila", serif;
+        font-weight: 700;
+        font-style: normal;
+    }
+
+
     body {
-        font-family: Arial, sans-serif;
+        font-family: "Laila", serif;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -232,10 +264,6 @@ $userMessage = $prependText . $userMessage;
             <input type="text" name="userMessage" placeholder="Chat to Sparky!" required autofocus>
             <button type="submit">Send</button>
         </form>
-        <form method="post" action="dragonchat.php">
-            <input type="hidden" name="clearChat" value="true">
-            <button type="submit" class="clear-chat-btn">Clear Chat</button>
-        </form>
     </div>
 
     <!-- Display the conversation -->
@@ -251,16 +279,27 @@ $userMessage = $prependText . $userMessage;
     $assistantMsg = htmlspecialchars($message['Sparky']);
     $displayMsg = strpos($assistantMsg, "Sparky:") === 0 ? $assistantMsg : "Sparky: " . $assistantMsg;
     ?>
-        <div class="chat-message assistant-message"><?php echo $displayMsg; ?></div>
+        <div class="chat-message assistant-message"><?php echo $displayMsg; ?>
+        </div>
         <?php endif; ?>
         <?php endforeach; ?>
         <?php endif; ?>
+    </div>
 
-        <script>
-        // Scroll to the bottom of the chat container to show the latest messages
-        var chatContainer = document.querySelector(".chat-container");
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-        </script>
+    <div class="form-container">
+        <form method="post" action="dragonchat.php">
+            <input type="hidden" name="clearChat" value="true">
+            <button type="submit" class="clear-chat-btn">Clear Chat</button>
+        </form>
+    </div>
+    <script>
+    // Scroll to the bottom of the chat container to show the latest messages
+    var chatContainer = document.querySelector(".chat-container");
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+    </script>
+
+
+
 
 </body>
 

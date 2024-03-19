@@ -88,7 +88,7 @@ $userMessage = $prependText . $userMessage;
     ]);
 
 // Wait one second to make chat look realistic
-    sleep(1);
+  
 
     
 // Execute cURL request and capture the response
@@ -109,6 +109,29 @@ $userMessage = $prependText . $userMessage;
     }
 }
 ?>
+
+<?php
+
+// Existing code for setup and API call...
+
+// Path to the speech.mp3 file
+$file = 'speech.mp3'; // Adjust the path as needed
+
+// Check if the file exists
+if (file_exists($file)) {
+    // Attempt to delete the file
+    unlink($file);
+}
+
+// Now proceed to make the TTS API call and create a new speech.mp3 file...
+// Ensure you handle the case where file deletion fails due to permissions or other issues.
+
+// Example of making a TTS call and saving the output
+// $result = makeTTSCall($text); // This function represents your TTS API call
+// file_put_contents($file, $result);
+
+?>
+
 <?php
 $ch = curl_init();
 
@@ -136,7 +159,6 @@ if (curl_errno($ch)) {
 
 curl_close($ch);
 ?>
-
 <!-- The chat page html -->
 <!DOCTYPE html>
 <html lang="en">
@@ -324,6 +346,18 @@ curl_close($ch);
     audioElement.oncanplaythrough = function() {
         audioElement.play().catch(e => console.error("Error playing audio: ", e));
     };
+    </script>
+
+    <script>
+    // Get references to the <audio> element and the play button
+    var audioElement = document.getElementById('speechAudio');
+    var playButton = document.getElementById('playButton');
+
+    // Add an event listener to the play button
+    playButton.addEventListener('click', function() {
+        // Play the audio when the button is clicked
+        audioElement.play().catch(e => console.error("Error playing audio:", e));
+    });
     </script>
     <script>
     // Scroll to the bottom of the chat container to show the latest messages

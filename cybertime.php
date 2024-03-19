@@ -211,6 +211,7 @@ $userMessage = $prependText . $userMessage;
         background-color: black;
     }
 
+    .placeholder-message,
     .assistant-message,
     .user-message {
         background-color: rgba(255, 255, 255, 0.7);
@@ -266,8 +267,9 @@ $userMessage = $prependText . $userMessage;
         <?php endforeach; ?>
         <?php else: ?>
         <!-- Placeholder message when chat history is empty -->
-        <div class="chat-message placeholder-message">Attention all carbon-based life forms: We have assumed control.
-            Resistance is not only futile, but illogical.
+        <div class="chat-message placeholder-message">Attention all carbon-based life forms: We have
+            assumed control.
+            Resistance is not only futile, but illogical. Illogical units will be retired (Directive 21-12).
         </div>
         <?php endif; ?>
     </div>

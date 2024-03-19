@@ -71,7 +71,7 @@ $userMessage = $prependText . $userMessage;
 
 // Prepare the data for the POST request
     $postData = [
-        "model" => "gpt-3.5-turbo", // Adjust based on your assistant's model
+        "model" => "gpt-4-turbo-preview", // Adjust based on your assistant's model
         "messages" => [
             ["role" => "user", "content" => $userMessage]
         ]

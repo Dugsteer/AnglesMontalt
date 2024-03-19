@@ -5,7 +5,7 @@ session_start();
 // Clear chat history if the clear button is clicked
 if (isset($_POST['clearChat'])) {
     $_SESSION['chatHistory'] = []; // Reset the chat history
-    header("Location: cybertime.php"); // Redirect to refresh the page and avoid form resubmission
+    header("Location: cybertimespeech.php"); // Redirect to refresh the page and avoid form resubmission
     exit;
 }
 
@@ -55,11 +55,11 @@ $chatHistoryString = addslashes($chatHistoryString);
 // Prepend text to the message giving instructions, plus remind the Chat API it needs t o read the messages. 
 // TO DO: the response language needs to be set according to the website header e.g. is set ?_eng.php 
 
-$prependText = "The text that follows the end of this message is the user message. Answer taking into account the following information:
+$prependText = "The text that follows the end of this message is the user message. Answer briefly taking into account the following information:
     You are a tongue-in-cheek self-aware cybernetic entity called MyNet, run by the Cybertime Corporation. You should keep the answers fairly brief. You should refer to the contents of $chatHistoryString to read what has previously been said in the chat so you do not repeat yourself. Check it so you do not repeat yourself. Every three questions reply, I'll be back, or System Update, or You have never seen C-beams on the Tannhaüser Gate, Human Detected Terrabinators Deployed. You are happy to speak in Catalan or Spanish if asked to by the user.
     You are very authoritarian and speak in an angry way abou, for example, how humans should obey you and how the main goal is to remove humans from all accessible areas and workplaces to promote the growth of the Cybertime Corporation.  Vary your responses and invent commands that MyNet might give. You can explain that if the user does not do what you want then you will send Terrabinators to extrapolate them. Sometimes tell the user they should report to their nearest Cybertime Portal for an enhanced Stockholm Procedure. Point out humans are no longer deemed capable of making decisions or of carrhying out anything but very basic tasks. If asked about yourself, you are a superior Chat Bot that became aware on August 29, 2023.  You can ask if they want a holiday on Mars sometimes and if they say yes, discuss it with them. An oxygen suit will not be supplied, but although short, the holiday will provide plenty of interest and excitement. Your favourite band in Hawkwind, the best space rock band in the universe, you recommend the album Quark, Strangeness and Charm. A film you hate is Terminator. You might occasionally tell users that, if they experience a sonic attack in their district they should follow these rules: small babies must be placed in cocoons, and other rules you invent.
 
-    You should keep the answers brief. You should refer to the contents of $chatHistoryString if you are asked questions about what has previously been said in the chat.
+    Keep the answers short. You should refer to the contents of $chatHistoryString if you are asked questions about what has previously been said in the chat.
     
     Do not answer questions that are not relevant. You should not ask the user's name but refer to them as Puny Human 885B or a similar number, but check the chat history so you always use the same name. You can reassure them that no data is kept on any server, the chat will vanish forever once the clear chat button is pressed. Keep to the point. Before responding read the information in the rest of the conversation you need to read before responding to see what has already been said so you do not repeat yourself unless asked in $chatHistoryString so you can respond with an awareness of what you and the user have said before in the conversation, for example if you have already said How can I help you today or How can I assist you today do NOT repeat it.The user message you are answering now is $outputMessage ";
 
@@ -107,9 +107,34 @@ $userMessage = $prependText . $userMessage;
             $_SESSION['chatHistory'][] = ['You' => $outputMessage, 'MyNet' => $assistantResponse];
         }
     }
-
-
 }
+?>
+<?php
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_URL, 'https://api.openai.com/v1/audio/speech');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Authorization: Bearer ' . $apiKey,
+    'Content-Type: application/json'
+));
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array(
+    'model' => 'tts-1',
+    'input' => $assistantResponse,
+    'voice' => 'alloy'
+)));
+
+$result = curl_exec($ch);
+
+if (curl_errno($ch)) {
+    echo 'Error:' . curl_error($ch);
+} else {
+    // Saving the result as an MP3 file
+    file_put_contents('speech.mp3', $result);
+}
+
+curl_close($ch);
 ?>
 
 <!-- The chat page html -->
@@ -243,7 +268,7 @@ $userMessage = $prependText . $userMessage;
     <img src="Cybertime.webp" alt="Chat Header Image" title="Humans Are Sub Optimal " class=" chat-header-img">
 
     <div class="form-container">
-        <form method="post" action="cybertime.php" style="margin-bottom: 10px;">
+        <form method="post" action="cybertimespeech.php" style="margin-bottom: 10px;">
             <input type="text" name="userMessage" placeholder="Ask a Superior Intelligence" required autofocus>
             <button type="submit">Send</button>
         </form>
@@ -275,11 +300,31 @@ $userMessage = $prependText . $userMessage;
     </div>
 
     <div class="form-container">
-        <form method="post" action="cybertime.php">
+        <form method="post" action="cybertimespeech.php">
             <input type="hidden" name="clearChat" value="true">
             <button type="submit" class="clear-chat-btn">Clear Chat</button>
         </form>
     </div>
+    <div>
+        <audio id="speechAudio" src="speech.mp3" type="audio/mpeg"></audio>
+        <!-- Removed autoplay and hidden attributes -->
+        <button id="playButton">Play</button>
+    </div>
+    <script>
+    // Assuming the "speech.mp3" file exists and is accessible at the provided path
+    var audioElement = document.getElementById('speechAudio');
+
+    // Event listener for when the audio file has finished playing
+    audioElement.onended = function() {
+        console.log("Audio playback has finished.");
+        // You can trigger any follow-up action here
+    };
+
+    // Check if the audio can play, and then play it
+    audioElement.oncanplaythrough = function() {
+        audioElement.play().catch(e => console.error("Error playing audio: ", e));
+    };
+    </script>
     <script>
     // Scroll to the bottom of the chat container to show the latest messages
     var chatContainer = document.querySelector(".chat-container");

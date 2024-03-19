@@ -138,7 +138,8 @@ $userMessage = $prependText . $userMessage;
         align-items: center;
         margin: 0;
         padding: 20px;
-        background-color: #D3D3D3;
+        /* background-color: #D3D3D3; */
+        background-image: url("cyber.webp");
         color: white;
 
     }
@@ -198,6 +199,9 @@ $userMessage = $prependText . $userMessage;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         background-color: black;
+        border-style: solid;
+        border-width: 1px;
+        border-color: lightgrey;
     }
 
     .chat-message {
@@ -215,6 +219,7 @@ $userMessage = $prependText . $userMessage;
         padding: 15px;
         border-radius: 10px;
         background-color: black;
+        font-size: 1.2rem;
     }
 
     @media (min-width: 768px) {
@@ -252,14 +257,18 @@ $userMessage = $prependText . $userMessage;
         <?php endif; ?>
         <?php if (!empty($message['MyNet'])): ?>
         <?php
-    // Check if the assistant's message already starts with "MyNet:"
-    $assistantMsg = htmlspecialchars($message['MyNet']);
-    $displayMsg = strpos($assistantMsg, "MyNet:") === 0 ? $assistantMsg : "MyNet: " . $assistantMsg;
-    ?>
-        <div class="chat-message assistant-message"><?php echo $displayMsg; ?>
-        </div>
+                // Check if the assistant's message already starts with "MyNet:"
+                $assistantMsg = htmlspecialchars($message['MyNet']);
+                $displayMsg = strpos($assistantMsg, "MyNet:") === 0 ? $assistantMsg : "MyNet: " . $assistantMsg;
+                ?>
+        <div class="chat-message assistant-message"><?php echo $displayMsg; ?></div>
         <?php endif; ?>
         <?php endforeach; ?>
+        <?php else: ?>
+        <!-- Placeholder message when chat history is empty -->
+        <div class="chat-message placeholder-message">Attention all carbon-based life forms: We have assumed control.
+            Resistance is not only futile, but illogical.
+        </div>
         <?php endif; ?>
     </div>
 
